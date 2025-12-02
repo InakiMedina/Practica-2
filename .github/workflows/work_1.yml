@@ -5,33 +5,21 @@ on:
 jobs:
     build:
         runs-on: ubuntu-latest
+        environment: EmailSecrets
         steps:
+        - name: Check out repository code
+          uses: actions/checkout@v2
         - name: Send mail
           uses: dawidd6/action-send-mail@v6
-          with:
-            # Specify connection via URL (replaces server_address, server_port, secure,
-            # username and password)
-            #
-            # Format:
-            #smtp://SendToMail:xkrc vfuj iuju gfvh@server:465
-            #  * smtp://user:password@server:port
-            #  * smtp+starttls://SendToMail:xkrcvfujiujugfvh@server:465
-            connection_url: ${{secrets.MAIL_CONNECTION}}
-            # Required mail server address if not connection_url:
-            server_address: smtp.gmail.com
-            # Server port, default 25:
-            server_port: 465
-            # Optional whether this connection use TLS (default is true if server_port is 465)
-            secure: true
-            # Optional (recommended) mail server username:
-            username: ${{secrets.MAIL_USERNAME}}
-            # Optional (recommended) mail server password:
-            password: ${{secrets.MAIL_PASSWORD}}
-            # Required mail subject:
-            subject: Cambios subidos a rama feature_a
-            # Required recipients' addresses:
-            to: inaki.medina@iteso.mx	
-            # Required sender full name (address can be skipped):
-            from: inaki.medina@gmail.com
-            # Optional plain body:
-            body: Build job of ${{github.repository}} completed successfully!
+          with: #    smtp+starttls://inaki.medina:uoxokhjndiaivmsp@gmail.com:587
+              server_address: smtp.gmail.com
+              server_port: 465
+              username: ${{ secrets.SMTP_USERNAME }}
+              password: ${{ secrets.SMTP_PASSWORD }} # Use the secret here!
+              subject: Cambios subidos a rama feature_a
+              # Required recipients' addresses:
+              to: inaki.medina@gmail.com
+              # Required sender full name (address can be skipped):
+              from: so yo putas
+             # Optional plain body:
+              body: Build job of ${{github.repository}} completed successfully!
