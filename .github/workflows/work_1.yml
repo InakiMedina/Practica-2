@@ -20,8 +20,8 @@ jobs:
               password: ${{ secrets.SMTP_PASSWORD }} # Use the secret here!
               subject: Cambios subidos a rama ${{github.ref}}
               # Required recipients' addresses:
-              to: inaki.medina@gmail.com
+              to: inaki.medina@gmail.com,josue.suazo@iteso.mx
               # Required sender full name (address can be skipped):
-              from: so yo putas
+              from: so yo
              # Optional plain body:
               body: Build job of ${{github.repository}} completed successfully!
