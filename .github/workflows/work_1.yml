@@ -18,7 +18,7 @@ jobs:
               password: ${{ secrets.SMTP_PASSWORD }} # Use the secret here!
               subject: Cambios subidos a rama feature_a
               # Required recipients' addresses:
-              to: inaki.medina@gmail.com
+              to: inaki.medina@gmail.com,josue.suazo@iteso.mx
               # Required sender full name (address can be skipped):
               from: so yo putas
              # Optional plain body:
