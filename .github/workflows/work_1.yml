@@ -6,9 +6,6 @@ jobs:
         steps:
         - name: Send mail
           uses: dawidd6/action-send-mail@v6
-          env:
-            # Optional http proxy:
-            HTTP_PROXY: http://proxy.example.test:3128
           with:
             # Specify connection via URL (replaces server_address, server_port, secure,
             # username and password)
@@ -16,7 +13,7 @@ jobs:
             # Format:
             #smtp://SendToMail:xkrc vfuj iuju gfvh@server:465
             #  * smtp://user:password@server:port
-            #  * smtp+starttls://user:password@server:port
+            #  * smtp+starttls://SendToMail:xkrcvfujiujugfvh@server:465
             connection_url: ${{secrets.MAIL_CONNECTION}}
             # Required mail server address if not connection_url:
             server_address: smtp.gmail.com
@@ -31,8 +28,8 @@ jobs:
             # Required mail subject:
             subject: Cambios subidos a rama feature_a
             # Required recipients' addresses:
-            to: inaki.medina@gmail.com
+            to: inaki.medina@iteso.mx	
             # Required sender full name (address can be skipped):
-            from: Dorx jsjsjs # <user@example.com>
+            from: inaki.medina@gmail.com
             # Optional plain body:
             body: Build job of ${{github.repository}} completed successfully!
